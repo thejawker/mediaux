@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\MediaItem;
+
 use function Pest\Laravel\get;
 
 beforeEach(function () {
@@ -22,7 +23,7 @@ test('it can resize an image on the fly based on width', function () {
         ->assertHeader('Content-Type', 'image/jpeg');
 
     $conversion = $mediaItem->conversions()->first();
-    
+
     $response->assertHeader('X-Hash', $conversion->getHash());
 
     $size = getimagesize($conversion->getTemporaryFilePath());
@@ -45,9 +46,8 @@ test('it can resize an image on the fly based on height', function () {
         ->assertHeader('Content-Type', 'image/jpeg');
 
     $conversion = $mediaItem->conversions()->first();
-    
+
     $response->assertHeader('X-Hash', $conversion->getHash());
-    
 
     $size = getimagesize($conversion->getTemporaryFilePath());
     expect()
@@ -62,7 +62,6 @@ test('it can resize an image on the fly based on width and height', function () 
     $sizes = getimagesize(base_path('tests/fixtures/test.jpg'));
     $width = $sizes[0] / 2;
     $height = $sizes[1] / 2;
-    
 
     // run the get request
     $response = get("/media/{$mediaItem->id}/w_{$width},h_{$height}/test.jpg");
@@ -73,9 +72,8 @@ test('it can resize an image on the fly based on width and height', function () 
         ->assertHeader('Content-Type', 'image/jpeg');
 
     $conversion = $mediaItem->conversions()->first();
-    
+
     $response->assertHeader('X-Hash', $conversion->getHash());
-    
 
     $size = getimagesize($conversion->getTemporaryFilePath());
     expect()

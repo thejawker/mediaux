@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\MediaItem;
+
 use function Pest\Laravel\get;
 
 beforeEach(function () {
