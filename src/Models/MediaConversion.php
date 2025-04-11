@@ -14,7 +14,7 @@ class MediaConversion extends Model implements MediaContract
 {
     /** @use HasFactory<MediaConversionFactory> */
     use HasFactory, IsMedia;
-    
+
     protected static $unguarded = true;
 
     public function getSpecifications(): ConversionSpecification

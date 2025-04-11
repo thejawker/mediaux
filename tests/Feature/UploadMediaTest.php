@@ -3,6 +3,7 @@
 use App\Models\MediaItem;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
+
 use function Pest\Laravel\postJson;
 
 test('a user can upload a media file', function () {
@@ -58,8 +59,8 @@ test('an uploaded asset has an expiration date', function () {
     postJson('/api/media', [
         'file' => $image,
     ])->assertCreated();
-    
+
     $mediaItem = MediaItem::first();
-    
+
     expect($mediaItem->expires_at)->isAfter(now()->addMinutes(59));
 });

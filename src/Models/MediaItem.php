@@ -20,7 +20,7 @@ class MediaItem extends Model implements MediaContract
     use HasFactory, IsMedia;
 
     protected static $unguarded = true;
-    
+
     protected $appends = [
         'url',
     ];
@@ -45,8 +45,8 @@ class MediaItem extends Model implements MediaContract
 
         $conversion = $this->conversions()
             ->whereJsonContains('specifications->file_extension', $conversionSpec->fileExtension)
-            ->when($conversionSpec->height, fn($query) => $query->whereJsonContains('specifications->height', $conversionSpec->height))
-            ->when($conversionSpec->width, fn($query) => $query->whereJsonContains('specifications->width', $conversionSpec->width))
+            ->when($conversionSpec->height, fn ($query) => $query->whereJsonContains('specifications->height', $conversionSpec->height))
+            ->when($conversionSpec->width, fn ($query) => $query->whereJsonContains('specifications->width', $conversionSpec->width))
             ->first();
 
         if ($conversion) {
@@ -58,7 +58,7 @@ class MediaItem extends Model implements MediaContract
 
     public function convertTo(ConversionSpecification $conversionSpec): MediaContract
     {
-        return (new ConvertMediaAction())->execute($this, $conversionSpec);
+        return (new ConvertMediaAction)->execute($this, $conversionSpec);
     }
 
     public function prepareConversion(ConversionSpecification $specification)
@@ -66,7 +66,7 @@ class MediaItem extends Model implements MediaContract
         $uuid = Str::uuid();
 
         return $this->conversions()->make([
-            'filename' => $uuid . '.' . $specification->fileExtension,
+            'filename' => $uuid.'.'.$specification->fileExtension,
             'original_filename' => $this->original_filename,
             'disk' => $this->disk,
             'specifications' => $specification->toArray(),
@@ -85,7 +85,7 @@ class MediaItem extends Model implements MediaContract
 
     public function deleteWithDependencies(): void
     {
-        $this->conversions->each(fn(MediaConversion $conversion) => $conversion->deleteWithAsset());
+        $this->conversions->each(fn (MediaConversion $conversion) => $conversion->deleteWithAsset());
         $this->deleteFile();
 
         $this->delete();

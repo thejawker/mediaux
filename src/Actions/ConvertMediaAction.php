@@ -55,11 +55,11 @@ class ConvertMediaAction
 
         $instance->save($tempPath);
 
-
         $media->getDisk()->put($conversion->filename, file_get_contents($tempPath));
 
-        $conversion->hash = (new HashMediaAction())->hashImage($tempPath);
+        $conversion->hash = (new HashMediaAction)->hashImage($tempPath);
         $conversion->save();
+
         return $conversion;
     }
 
@@ -87,8 +87,9 @@ class ConvertMediaAction
             ->inFormat($format)
             ->save($conversion->filename);
 
-        $conversion->hash = (new HashMediaAction())->hashMedia($conversion);
+        $conversion->hash = (new HashMediaAction)->hashMedia($conversion);
         $conversion->save();
+
         return $conversion;
     }
 
@@ -101,11 +102,11 @@ class ConvertMediaAction
             case 'mp4':
                 return new X264('aac');
             case 'webm':
-                return new WebM();
+                return new WebM;
             case 'ogg':
-                return new Ogg();
+                return new Ogg;
             case 'gif':
-                return new GifFormat();
+                return new GifFormat;
             default:
                 throw new Exception('Unsupported format');
         }

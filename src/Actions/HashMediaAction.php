@@ -30,7 +30,7 @@ class HashMediaAction
 
     public function hashImage(string $contents): Hash
     {
-        $hasher = new ImageHash(new PerceptualHash());
+        $hasher = new ImageHash(new PerceptualHash);
 
         return $hasher->hash($contents);
     }

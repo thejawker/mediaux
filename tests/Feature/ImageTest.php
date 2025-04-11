@@ -2,6 +2,7 @@
 
 use App\Models\MediaConversion;
 use App\Models\MediaItem;
+
 use function Pest\Laravel\get;
 
 beforeEach(function () {
@@ -23,7 +24,7 @@ test('it can serve a media item that is an image', function () {
         ->assertHeader('Content-Type', 'image/jpeg')
         ->assertHeader('Content-Length', strlen($image))
         ->assertHeader('X-Hash', $mediaItem->hash);
-    
+
     expect(MediaConversion::count())->toBe(0);
 });
 

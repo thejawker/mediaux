@@ -2,7 +2,6 @@
 
 namespace TheJawker\Mediaux\Http\Controllers;
 
-
 use App\Actions\Media\CreateMediaItemFromRequestAction;
 use Illuminate\Http\Request;
 
@@ -14,7 +13,7 @@ class MediaUploadController
             'file' => ['required', 'file'],
         ]);
 
-        $mediaItem = (new CreateMediaItemFromRequestAction())->execute(auth()->user(), $request);
+        $mediaItem = (new CreateMediaItemFromRequestAction)->execute(auth()->user(), $request);
 
         return response()->json($mediaItem, 201);
     }
