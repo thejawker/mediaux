@@ -1,15 +1,17 @@
 <?php
 
-use App\DataTransferObjects\ConversionSpecification;
-use App\Models\MediaItem;
 use Illuminate\Database\Eloquent\Factories\Sequence;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
+use TheJawker\Mediaux\DataTransferObjects\ConversionSpecification;
+use TheJawker\Mediaux\Models\MediaItem;
 
 beforeEach(function () {
     Storage::fake('public');
 });
 
 test('an expired media item is removed from the database', function () {
-    $image = file_get_contents(base_path('tests/fixtures/test.jpg'));
+    $image = file_get_contents(__DIR__ . '/../fixtures/test.jpg');
     $mediaItem = MediaItem::factory()
         ->withContents(disk: 'public', contents: $image, filename: 'test.jpg')
         ->create([
@@ -28,7 +30,7 @@ test('an expired media item is removed from the database', function () {
 });
 
 test('delete will actually delete the file too', function () {
-    $image = file_get_contents(base_path('tests/fixtures/test.jpg'));
+    $image = file_get_contents(__DIR__ . '/../fixtures/test.jpg');
     $mediaItem = MediaItem::factory()
         ->withContents(disk: 'public', contents: $image, filename: 'test.jpg')
         ->create([
@@ -49,7 +51,7 @@ test('delete will actually delete the file too', function () {
 });
 
 test('will also delete any conversions', function () {
-    $image = file_get_contents(base_path('tests/fixtures/test.jpg'));
+    $image = file_get_contents(__DIR__ . '/../fixtures/test.jpg');
     $mediaItem = MediaItem::factory()
         ->withContents(disk: 'public', contents: $image, filename: 'test.jpg')
         ->create([
@@ -78,7 +80,7 @@ test('will also delete any conversions', function () {
 });
 
 test('will not delete non expired media items', function () {
-    $image = file_get_contents(base_path('tests/fixtures/test.jpg'));
+    $image = file_get_contents(__DIR__ . '/../fixtures/test.jpg');
     MediaItem::factory()
         ->withContents(disk: 'public', contents: $image, filename: 'test.jpg')
         ->count(2)

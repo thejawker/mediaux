@@ -1,18 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace TheJawker\Mediaux\Models;
 
-use App\Actions\Media\ConvertMediaAction;
-use App\Contracts\MediaContract;
-use App\DataTransferObjects\ConversionSpecification;
-use App\Traits\IsMedia;
-use Database\Factories\MediaItemFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Str;
+use TheJawker\Mediaux\Contracts\MediaContract;
+use TheJawker\Mediaux\Traits\IsMedia;
 
 class MediaItem extends Model implements MediaContract
 {
@@ -20,7 +17,7 @@ class MediaItem extends Model implements MediaContract
     use HasFactory, IsMedia;
 
     protected static $unguarded = true;
-    
+
     protected $appends = [
         'url',
     ];

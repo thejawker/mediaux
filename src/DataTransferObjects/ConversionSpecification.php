@@ -2,7 +2,6 @@
 
 namespace TheJawker\Mediaux\DataTransferObjects;
 
-use Arr;
 use Illuminate\Http\Request;
 
 class ConversionSpecification

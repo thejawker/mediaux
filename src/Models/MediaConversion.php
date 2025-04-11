@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace TheJawker\Mediaux\Models;
 
 use App\Contracts\MediaContract;
 use App\DataTransferObjects\ConversionSpecification;
@@ -14,7 +14,7 @@ class MediaConversion extends Model implements MediaContract
 {
     /** @use HasFactory<MediaConversionFactory> */
     use HasFactory, IsMedia;
-    
+
     protected static $unguarded = true;
 
     public function getSpecifications(): ConversionSpecification
