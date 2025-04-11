@@ -16,7 +16,7 @@
     backupStaticProperties="false"
 >
     <testsuites>
-        <testsuite name="Bram Veerman Test Suite">
+        <testsuite name="Mediaux Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

@@ -1,10 +1,10 @@
 <?php
 
-namespace Bram Veerman\Mediaux;
+namespace TheJawker\Mediaux;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Bram Veerman\Mediaux\Commands\MediauxCommand;
+use TheJawker\Mediaux\Commands\MediauxCommand;
 
 class MediauxServiceProvider extends PackageServiceProvider
 {

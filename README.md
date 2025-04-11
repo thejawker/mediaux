@@ -52,8 +52,8 @@ php artisan vendor:publish --tag="mediaux-views"
 ## Usage
 
 ```php
-$mediaux = new Bram Veerman\Mediaux();
-echo $mediaux->echoPhrase('Hello, Bram Veerman!');
+$mediaux = new TheJawker\Mediaux();
+echo $mediaux->echoPhrase('Hello!');
 ```
 
 ## Testing

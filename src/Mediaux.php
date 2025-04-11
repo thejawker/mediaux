@@ -1,5 +1,5 @@
 <?php
 
-namespace Bram Veerman\Mediaux;
+namespace TheJawker\Mediaux;
 
 class Mediaux {}

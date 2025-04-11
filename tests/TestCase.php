@@ -1,10 +1,10 @@
 <?php
 
-namespace Bram Veerman\Mediaux\Tests;
+namespace TheJawker\Mediaux\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Bram Veerman\Mediaux\MediauxServiceProvider;
+use TheJawker\Mediaux\MediauxServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Bram Veerman\\Mediaux\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'TheJawker\\Mediaux\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Bram Veerman\Mediaux\Commands;
+namespace TheJawker\Mediaux\Commands;
 
 use Illuminate\Console\Command;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Bram Veerman\Mediaux\Database\Factories;
+namespace TheJawker\Mediaux\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

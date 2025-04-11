@@ -1,16 +1,16 @@
 <?php
 
-namespace Bram Veerman\Mediaux\Facades;
+namespace TheJawker\Mediaux\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Bram Veerman\Mediaux\Mediaux
+ * @see \TheJawker\Mediaux\Mediaux
  */
 class Mediaux extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \Bram Veerman\Mediaux\Mediaux::class;
+        return \TheJawker\Mediaux\Mediaux::class;
     }
 }

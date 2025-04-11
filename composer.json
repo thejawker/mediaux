@@ -2,7 +2,6 @@
     "name": "thejawker/mediaux",
     "description": "mediaux: a mediocre monstrosity making media marginally manageable",
     "keywords": [
-        "Bram Veerman",
         "laravel",
         "mediaux"
     ],
@@ -16,9 +15,10 @@
         }
     ],
     "require": {
-        "php": "^8.4",
-        "spatie/laravel-package-tools": "^1.16",
-        "illuminate/contracts": "^10.0||^11.0||^12.0"
+        "php": "^8.2",
+        "illuminate/contracts": "^10.0||^11.0||^12.0",
+        "pbmedia/laravel-ffmpeg": "^8.7",
+        "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
         "laravel/pint": "^1.14",
@@ -34,13 +34,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Bram Veerman\\Mediaux\\": "src/",
-            "Bram Veerman\\Mediaux\\Database\\Factories\\": "database/factories/"
+            "TheJawker\\Mediaux\\": "src/",
+            "TheJawker\\Mediaux\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Bram Veerman\\Mediaux\\Tests\\": "tests/",
+            "TheJawker\\Mediaux\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -62,10 +62,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Bram Veerman\\Mediaux\\MediauxServiceProvider"
+                "TheJawker\\Mediaux\\MediauxServiceProvider"
             ],
             "aliases": {
-                "Mediaux": "Bram Veerman\\Mediaux\\Facades\\Mediaux"
+                "Mediaux": "TheJawker\\Mediaux\\Facades\\Mediaux"
             }
         }
     },
