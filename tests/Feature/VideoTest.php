@@ -9,7 +9,7 @@ beforeEach(function () {
 });
 
 test('it can retrieves a video', function () {
-    $video = file_get_contents(base_path('tests/fixtures/test.mp4'));
+    $video = file_get_contents(fixtures('test.mp4'));
     $mediaItem = MediaItem::factory()->withContents(disk: 'public', contents: $video, filename: 'test.mp4')->create([
         'public' => true,
     ]);
@@ -26,7 +26,7 @@ test('it can retrieves a video', function () {
 })->group('ffmpeg');
 
 test('it can convert a video into a gif', function () {
-    $video = file_get_contents(base_path('tests/fixtures/test.mp4'));
+    $video = file_get_contents(fixtures('test.mp4'));
     $mediaItem = MediaItem::factory()->withContents(disk: 'public', contents: $video, filename: 'test.mp4')->create([
         'public' => true,
     ]);
@@ -41,7 +41,7 @@ test('it can convert a video into a gif', function () {
 })->group('ffmpeg');
 
 test('it can convert a video into a webm', function () {
-    $video = file_get_contents(base_path('tests/fixtures/test.mp4'));
+    $video = file_get_contents(fixtures('test.mp4'));
     $mediaItem = MediaItem::factory()->withContents(disk: 'public', contents: $video, filename: 'test.mp4')->create([
         'public' => true,
     ]);

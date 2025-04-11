@@ -2,14 +2,16 @@
 
 namespace TheJawker\Mediaux\Models;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Str;
-use TheJawker\Mediaux\Contracts\MediaContract;
 use TheJawker\Mediaux\Traits\IsMedia;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use TheJawker\Mediaux\Contracts\MediaContract;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use TheJawker\Mediaux\Database\Factories\MediaItemFactory;
+use TheJawker\Mediaux\DataTransferObjects\ConversionSpecification;
 
 class MediaItem extends Model implements MediaContract
 {
@@ -31,7 +33,7 @@ class MediaItem extends Model implements MediaContract
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(config('mediaux.user_model'));
     }
 
     public function getConversion(ConversionSpecification $conversionSpec): MediaContract
@@ -42,8 +44,8 @@ class MediaItem extends Model implements MediaContract
 
         $conversion = $this->conversions()
             ->whereJsonContains('specifications->file_extension', $conversionSpec->fileExtension)
-            ->when($conversionSpec->height, fn ($query) => $query->whereJsonContains('specifications->height', $conversionSpec->height))
-            ->when($conversionSpec->width, fn ($query) => $query->whereJsonContains('specifications->width', $conversionSpec->width))
+            ->when($conversionSpec->height, fn($query) => $query->whereJsonContains('specifications->height', $conversionSpec->height))
+            ->when($conversionSpec->width, fn($query) => $query->whereJsonContains('specifications->width', $conversionSpec->width))
             ->first();
 
         if ($conversion) {
@@ -63,7 +65,7 @@ class MediaItem extends Model implements MediaContract
         $uuid = Str::uuid();
 
         return $this->conversions()->make([
-            'filename' => $uuid.'.'.$specification->fileExtension,
+            'filename' => $uuid . '.' . $specification->fileExtension,
             'original_filename' => $this->original_filename,
             'disk' => $this->disk,
             'specifications' => $specification->toArray(),
@@ -82,7 +84,7 @@ class MediaItem extends Model implements MediaContract
 
     public function deleteWithDependencies(): void
     {
-        $this->conversions->each(fn (MediaConversion $conversion) => $conversion->deleteWithAsset());
+        $this->conversions->each(fn(MediaConversion $conversion) => $conversion->deleteWithAsset());
         $this->deleteFile();
 
         $this->delete();

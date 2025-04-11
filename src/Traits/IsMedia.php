@@ -3,6 +3,7 @@
 namespace TheJawker\Mediaux\Traits;
 
 use Illuminate\Contracts\Filesystem\Filesystem;
+use Illuminate\Support\Facades\Storage;
 
 trait IsMedia
 {

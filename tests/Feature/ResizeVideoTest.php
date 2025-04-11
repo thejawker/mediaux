@@ -9,7 +9,7 @@ beforeEach(function () {
 });
 
 test('it can resize an video on the fly based on width', function () {
-    $video = file_get_contents(base_path('tests/fixtures/test.mp4'));
+    $video = file_get_contents(fixtures('test.mp4'));
     $mediaItem = MediaItem::factory()->withContents(disk: 'public', contents: $video, filename: 'test.mp4')->create([
         'public' => true,
     ]);
@@ -32,7 +32,7 @@ test('it can resize an video on the fly based on width', function () {
 })->group('ffmpeg');
 
 test('it can resize an video on the fly based on height', function () {
-    $video = file_get_contents(base_path('tests/fixtures/test.mp4'));
+    $video = file_get_contents(fixtures('test.mp4'));
     $mediaItem = MediaItem::factory()->withContents(disk: 'public', contents: $video, filename: 'test.mp4')->create([
         'public' => true,
     ]);
@@ -55,7 +55,7 @@ test('it can resize an video on the fly based on height', function () {
 })->group('ffmpeg');
 
 test('it can resize an video on the fly based on width and height', function () {
-    $video = file_get_contents(base_path('tests/fixtures/test.mp4'));
+    $video = file_get_contents(fixtures('test.mp4'));
     $mediaItem = MediaItem::factory()->withContents(disk: 'public', contents: $video, filename: 'test.mp4')->create([
         'public' => true,
     ]);

@@ -10,7 +10,7 @@ beforeEach(function () {
 });
 
 test('it can serve a media item that is an image', function () {
-    $image = file_get_contents(base_path('tests/fixtures/test.jpg'));
+    $image = file_get_contents(fixtures('test.jpg'));
     $mediaItem = MediaItem::factory()->withContents(disk: 'public', contents: $image, filename: 'test.jpg')->create([
         'public' => true,
     ]);
@@ -29,7 +29,7 @@ test('it can serve a media item that is an image', function () {
 });
 
 test('it can dynamically convert the file into a webp', function () {
-    $image = file_get_contents(base_path('tests/fixtures/test.jpg'));
+    $image = file_get_contents(fixtures('test.jpg'));
     $mediaItem = MediaItem::factory()->withContents(disk: 'public', contents: $image, filename: 'test.jpg')->create([
         'public' => true,
     ]);
@@ -50,7 +50,7 @@ test('it can dynamically convert the file into a webp', function () {
 
 // convert to png
 test('it can dynamically convert the file into a png', function () {
-    $image = file_get_contents(base_path('tests/fixtures/test.jpg'));
+    $image = file_get_contents(fixtures('test.jpg'));
     $mediaItem = MediaItem::factory()->withContents(disk: 'public', contents: $image, filename: 'test.jpg')->create([
         'public' => true,
     ]);
@@ -70,7 +70,7 @@ test('it can dynamically convert the file into a png', function () {
 });
 
 test('hitting the conversion endpoint twice will not convert the file again', function () {
-    $image = file_get_contents(base_path('tests/fixtures/test.jpg'));
+    $image = file_get_contents(fixtures('test.jpg'));
     $mediaItem = MediaItem::factory()->withContents(disk: 'public', contents: $image, filename: 'test.jpg')->create([
         'public' => true,
     ]);

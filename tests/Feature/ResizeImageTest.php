@@ -9,7 +9,7 @@ beforeEach(function () {
 });
 
 test('it can resize an image on the fly based on width', function () {
-    $image = file_get_contents(base_path('tests/fixtures/test.jpg'));
+    $image = file_get_contents(fixtures('test.jpg'));
     $mediaItem = MediaItem::factory()->withContents(disk: 'public', contents: $image, filename: 'test.jpg')->create([
         'public' => true,
     ]);
@@ -32,7 +32,7 @@ test('it can resize an image on the fly based on width', function () {
 });
 
 test('it can resize an image on the fly based on height', function () {
-    $image = file_get_contents(base_path('tests/fixtures/test.jpg'));
+    $image = file_get_contents(fixtures('test.jpg'));
     $mediaItem = MediaItem::factory()->withContents(disk: 'public', contents: $image, filename: 'test.jpg')->create([
         'public' => true,
     ]);
@@ -55,11 +55,11 @@ test('it can resize an image on the fly based on height', function () {
 });
 
 test('it can resize an image on the fly based on width and height', function () {
-    $image = file_get_contents(base_path('tests/fixtures/test.jpg'));
+    $image = file_get_contents(base_path('/test.jpg'));
     $mediaItem = MediaItem::factory()->withContents(disk: 'public', contents: $image, filename: 'test.jpg')->create([
         'public' => true,
     ]);
-    $sizes = getimagesize(base_path('tests/fixtures/test.jpg'));
+    $sizes = getimagesize(fixtures('test.jpg'));
     $width = $sizes[0] / 2;
     $height = $sizes[1] / 2;
 

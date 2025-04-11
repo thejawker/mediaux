@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Storage;
 use TheJawker\Mediaux\Contracts\MediaContract;
 use TheJawker\Mediaux\Database\Factories\MediaConversionFactory;
+use TheJawker\Mediaux\DataTransferObjects\ConversionSpecification;
 use TheJawker\Mediaux\Traits\IsMedia;
 
 class MediaConversion extends Model implements MediaContract

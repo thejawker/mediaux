@@ -9,7 +9,7 @@ use function Pest\Laravel\postJson;
 test('a user can upload a media file', function () {
     $user = User::factory()->create();
     $image = new UploadedFile(
-        base_path('tests/fixtures/test.jpg'),
+        fixtures('test.jpg'),
         'test.jpg',
         'image/jpeg',
         null,
@@ -45,9 +45,9 @@ test('a user can upload a media file', function () {
 });
 
 test('an uploaded asset has an expiration date', function () {
-    $user = User::factory()->create();
+    $user = userFactory()->create();
     $image = new UploadedFile(
-        base_path('tests/fixtures/test.jpg'),
+        fixtures('test.jpg'),
         'test.jpg',
         'image/jpeg',
         null,

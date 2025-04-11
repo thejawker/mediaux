@@ -2,7 +2,7 @@
 
 namespace TheJawker\Mediaux\Actions;
 
-use App\Models\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Request;
 use Storage;
 use Str;
@@ -11,7 +11,7 @@ class CreateMediaItemFromRequestAction
 {
     const DISK = 'public';
 
-    public function execute(User $user, Request $request)
+    public function execute(Authenticatable $user, Request $request)
     {
         $uuid = Str::uuid();
         $filename = $request->file('file')->getClientOriginalName();

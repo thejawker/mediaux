@@ -5,6 +5,7 @@ namespace TheJawker\Mediaux\Tests;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
 use TheJawker\Mediaux\MediauxServiceProvider;
+use TheJawker\Mediaux\Models\TestUser;
 
 class TestCase extends Orchestra
 {
@@ -27,11 +28,10 @@ class TestCase extends Orchestra
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
+        config()->set('mediaux.user_model', TestUser::class);
 
-        /*
-         foreach (\Illuminate\Support\Facades\File::allFiles(__DIR__ . '/database/migrations') as $migration) {
+         foreach (\Illuminate\Support\Facades\File::allFiles(__DIR__ . '/../database/migrations') as $migration) {
             (include $migration->getRealPath())->up();
          }
-         */
     }
 }
