@@ -5,7 +5,7 @@ namespace TheJawker\Mediaux\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\MediaConversion>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\TheJawker\Mediaux\Models\MediaConversion>
  */
 class MediaConversionFactory extends Factory
 {

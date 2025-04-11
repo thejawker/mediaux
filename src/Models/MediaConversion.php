@@ -2,13 +2,12 @@
 
 namespace TheJawker\Mediaux\Models;
 
-use App\Contracts\MediaContract;
-use App\DataTransferObjects\ConversionSpecification;
-use App\Traits\IsMedia;
-use Database\Factories\MediaConversionFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Storage;
+use TheJawker\Mediaux\Contracts\MediaContract;
+use TheJawker\Mediaux\Database\Factories\MediaConversionFactory;
+use TheJawker\Mediaux\Traits\IsMedia;
 
 class MediaConversion extends Model implements MediaContract
 {

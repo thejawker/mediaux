@@ -25,19 +25,19 @@ class MediaItemFactory extends Factory
     {
         $uuid = Str::uuid();
         // store the image on the disk storage
-        $newFilename = $uuid . '.' . pathinfo($filename, PATHINFO_EXTENSION);
+        $newFilename = $uuid.'.'.pathinfo($filename, PATHINFO_EXTENSION);
         Storage::disk($disk)->put($newFilename, $contents);
 
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'filename' => $newFilename,
             'mime_type' => Storage::disk($disk)->mimeType($newFilename),
             'disk' => $disk,
             'original_filename' => $filename,
-            'hash' => (new HashMediaAction())->execute($contents),
+            'hash' => (new HashMediaAction)->execute($contents),
         ]);
     }
 
-    public function withFile(string $path = null): MediaItemFactory|Factory
+    public function withFile(?string $path = null): MediaItemFactory|Factory
     {
         $path = $path ?: base_path('tests/fixtures/test.jpg');
         $contents = file_get_contents($path);
