@@ -7,12 +7,12 @@ uses(TestCase::class)->in(__DIR__);
 
 function fixtures(string $path)
 {
-    return __DIR__ . '/Feature/fixtures' . $path;
+    return __DIR__.'/Feature/fixtures'.$path;
 }
 
 /**
- *
  * @template TFactory of \Illuminate\Database\Eloquent\Factories\Factory
+ *
  * @return TestUserFactory
  */
 function userFactory()
