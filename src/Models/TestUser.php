@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use TheJawker\Mediaux\Database\Factories\TestUserFactory;
+use TheJawker\Mediaux\Traits\HasMedia;
 
 class TestUser extends Authenticatable
 {
     /** @use HasFactory<TestUserFactory> */
-    use HasFactory;
+    use HasFactory, HasMedia;
 
     protected $fillable = [
         'name',
@@ -24,9 +25,4 @@ class TestUser extends Authenticatable
         'email',
         'remember_token',
     ];
-
-    public function mediaItems(): HasMany
-    {
-        return $this->hasMany(MediaItem::class, 'user_id', 'id');
-    }
 }

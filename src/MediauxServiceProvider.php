@@ -24,7 +24,6 @@ class MediauxServiceProvider extends PackageServiceProvider
         $package
             ->name('mediaux')
             ->hasConfigFile()
-            ->hasViews()
             ->hasRoute('media')
             ->hasMigration('create_mediaux_table')
             ->hasCommands(CleanExpiredMedia::class);
