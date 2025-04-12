@@ -3,6 +3,7 @@
 namespace TheJawker\Mediaux\DataTransferObjects;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class ConversionSpecification
 {
@@ -52,9 +53,9 @@ class ConversionSpecification
     public static function fromArray(array $data): self
     {
         return new self(
-            fileExtension: $data['file_extension'],
-            height: $data['height'],
-            width: $data['width'],
+            fileExtension: Arr::get($data, 'file_extension'),
+            height: Arr::get($data, 'height'),
+            width: Arr::get($data, 'width'),
         );
     }
 }

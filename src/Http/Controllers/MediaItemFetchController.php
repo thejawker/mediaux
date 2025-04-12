@@ -2,8 +2,8 @@
 
 namespace TheJawker\Mediaux\Http\Controllers;
 
-use App\DataTransferObjects\ConversionSpecification;
-use App\Models\MediaItem;
+use TheJawker\Mediaux\DataTransferObjects\ConversionSpecification;
+use TheJawker\Mediaux\Models\MediaItem;
 
 class MediaItemFetchController
 {

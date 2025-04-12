@@ -2,8 +2,8 @@
 
 namespace TheJawker\Mediaux\Commands;
 
-use App\Models\MediaItem;
 use Illuminate\Console\Command;
+use TheJawker\Mediaux\Models\MediaItem;
 
 class CleanExpiredMedia extends Command
 {

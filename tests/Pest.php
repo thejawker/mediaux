@@ -7,7 +7,7 @@ uses(TestCase::class)->in(__DIR__);
 
 function fixtures(string $path)
 {
-    return __DIR__ . '/Feature/fixtures' . $path;
+    return __DIR__ . '/fixtures/' . \Illuminate\Support\Str::ltrim($path, '/');
 }
 
 /**
@@ -17,5 +17,7 @@ function fixtures(string $path)
  */
 function userFactory()
 {
-    return config('mediaux.user_model')->factory();
+    $userModel = config('mediaux.user_model');
+
+    return $userModel::factory();
 }

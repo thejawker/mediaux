@@ -1,13 +1,12 @@
 <?php
 
-use App\Models\MediaItem;
-use App\Models\User;
 use Illuminate\Http\UploadedFile;
 
+use TheJawker\Mediaux\Models\MediaItem;
 use function Pest\Laravel\postJson;
 
 test('a user can upload a media file', function () {
-    $user = User::factory()->create();
+    $user = userFactory()->create();
     $image = new UploadedFile(
         fixtures('test.jpg'),
         'test.jpg',
@@ -18,7 +17,7 @@ test('a user can upload a media file', function () {
 
     auth()->login($user);
 
-    $response = postJson('/api/media', [
+    $response = postJson('/media', [
         'file' => $image,
     ]);
 
@@ -56,7 +55,7 @@ test('an uploaded asset has an expiration date', function () {
 
     auth()->login($user);
 
-    postJson('/api/media', [
+    postJson('/media', [
         'file' => $image,
     ])->assertCreated();
 

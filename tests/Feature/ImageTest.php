@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\MediaConversion;
-use App\Models\MediaItem;
 
+use TheJawker\Mediaux\Models\MediaConversion;
+use TheJawker\Mediaux\Models\MediaItem;
 use function Pest\Laravel\get;
 
 beforeEach(function () {

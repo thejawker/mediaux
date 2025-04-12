@@ -6,6 +6,7 @@ namespace TheJawker\Mediaux\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use TheJawker\Mediaux\Database\Factories\TestUserFactory;
 
 class TestUser extends Authenticatable
 {
@@ -26,6 +27,6 @@ class TestUser extends Authenticatable
 
     public function mediaItems(): HasMany
     {
-        return $this->hasMany(MediaItem::class);
+        return $this->hasMany(MediaItem::class, 'user_id', 'id');
     }
 }

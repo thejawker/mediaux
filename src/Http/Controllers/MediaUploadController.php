@@ -2,8 +2,8 @@
 
 namespace TheJawker\Mediaux\Http\Controllers;
 
-use App\Actions\Media\CreateMediaItemFromRequestAction;
 use Illuminate\Http\Request;
+use TheJawker\Mediaux\Actions\CreateMediaItemFromRequestAction;
 
 class MediaUploadController
 {

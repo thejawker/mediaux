@@ -2,10 +2,10 @@
 
 namespace TheJawker\Mediaux\Actions;
 
-use App\Models\MediaConversion;
 use Jenssegers\ImageHash\Hash;
 use Jenssegers\ImageHash\ImageHash;
 use Jenssegers\ImageHash\Implementations\PerceptualHash;
+use TheJawker\Mediaux\Models\MediaConversion;
 
 class HashMediaAction
 {

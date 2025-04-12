@@ -2,12 +2,19 @@
 
 namespace TheJawker\Mediaux;
 
+use ProtoneMedia\LaravelFFMpeg\Support\ServiceProvider;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use TheJawker\Mediaux\Commands\MediauxCommand;
+use TheJawker\Mediaux\Commands\CleanExpiredMedia;
 
 class MediauxServiceProvider extends PackageServiceProvider
 {
+    public function packageRegistered()
+    {
+        $this->app->register(ServiceProvider::class);
+    }
+
+
     public function configurePackage(Package $package): void
     {
         /*
@@ -19,7 +26,8 @@ class MediauxServiceProvider extends PackageServiceProvider
             ->name('mediaux')
             ->hasConfigFile()
             ->hasViews()
+            ->hasRoute('media')
             ->hasMigration('create_mediaux_table')
-            ->hasCommand(MediauxCommand::class);
+            ->hasCommands(CleanExpiredMedia::class);
     }
 }

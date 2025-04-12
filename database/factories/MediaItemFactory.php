@@ -3,7 +3,6 @@
 namespace TheJawker\Mediaux\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Foundation\Auth\User;
 use Storage;
 use Str;
 use TheJawker\Mediaux\Actions\HashMediaAction;
@@ -14,10 +13,14 @@ use TheJawker\Mediaux\Models\MediaItem;
  */
 class MediaItemFactory extends Factory
 {
+    protected $model = MediaItem::class;
+
     public function definition(): array
     {
+        $user = config('mediaux.user_model');
+
         return [
-            'user_id' => User::factory(),
+            'user_id' => $user::factory(),
         ];
     }
 

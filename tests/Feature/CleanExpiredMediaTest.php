@@ -11,7 +11,7 @@ beforeEach(function () {
 });
 
 test('an expired media item is removed from the database', function () {
-    $image = file_get_contents(__DIR__.'/../fixtures/test.jpg');
+    $image = file_get_contents(fixtures('test.jpg'));
     $mediaItem = MediaItem::factory()
         ->withContents(disk: 'public', contents: $image, filename: 'test.jpg')
         ->create([
@@ -30,7 +30,7 @@ test('an expired media item is removed from the database', function () {
 });
 
 test('delete will actually delete the file too', function () {
-    $image = file_get_contents(__DIR__.'/../fixtures/test.jpg');
+    $image = file_get_contents(fixtures('test.jpg'));
     $mediaItem = MediaItem::factory()
         ->withContents(disk: 'public', contents: $image, filename: 'test.jpg')
         ->create([
@@ -51,7 +51,7 @@ test('delete will actually delete the file too', function () {
 });
 
 test('will also delete any conversions', function () {
-    $image = file_get_contents(__DIR__.'/../fixtures/test.jpg');
+    $image = file_get_contents(fixtures('test.jpg'));
     $mediaItem = MediaItem::factory()
         ->withContents(disk: 'public', contents: $image, filename: 'test.jpg')
         ->create([
@@ -80,7 +80,7 @@ test('will also delete any conversions', function () {
 });
 
 test('will not delete non expired media items', function () {
-    $image = file_get_contents(__DIR__.'/../fixtures/test.jpg');
+    $image = file_get_contents(fixtures('test.jpg'));
     MediaItem::factory()
         ->withContents(disk: 'public', contents: $image, filename: 'test.jpg')
         ->count(2)

@@ -3,6 +3,7 @@
 namespace TheJawker\Mediaux\Models;
 
 use Str;
+use TheJawker\Mediaux\Actions\ConvertMediaAction;
 use TheJawker\Mediaux\Traits\IsMedia;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -33,7 +34,7 @@ class MediaItem extends Model implements MediaContract
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(config('mediaux.user_model'));
+        return $this->belongsTo(config('mediaux.user_model'), 'id', 'user_id');
     }
 
     public function getConversion(ConversionSpecification $conversionSpec): MediaContract

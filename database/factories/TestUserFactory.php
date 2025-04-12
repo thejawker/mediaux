@@ -12,6 +12,8 @@ use TheJawker\Mediaux\Models\TestUser;
  */
 class TestUserFactory extends Factory
 {
+    protected $model = TestUser::class;
+
     /**
      * The current password being used by the factory.
      */

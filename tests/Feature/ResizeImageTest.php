@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\MediaItem;
 
+use TheJawker\Mediaux\Models\MediaItem;
 use function Pest\Laravel\get;
 
 beforeEach(function () {
@@ -55,7 +55,7 @@ test('it can resize an image on the fly based on height', function () {
 });
 
 test('it can resize an image on the fly based on width and height', function () {
-    $image = file_get_contents(base_path('/test.jpg'));
+    $image = file_get_contents(fixtures('/test.jpg'));
     $mediaItem = MediaItem::factory()->withContents(disk: 'public', contents: $image, filename: 'test.jpg')->create([
         'public' => true,
     ]);
