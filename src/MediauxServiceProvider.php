@@ -12,6 +12,10 @@ class MediauxServiceProvider extends PackageServiceProvider
     public function packageRegistered()
     {
         $this->app->register(ServiceProvider::class);
+
+        if (!config('mediaux.disable_routes')) {
+            $this->loadRoutesFrom('./routes/media.php');
+        }
     }
 
     public function configurePackage(Package $package): void
@@ -24,7 +28,6 @@ class MediauxServiceProvider extends PackageServiceProvider
         $package
             ->name('mediaux')
             ->hasConfigFile()
-            ->hasRoute('media')
             ->hasMigration('create_mediaux_table')
             ->hasCommands(CleanExpiredMedia::class);
     }
