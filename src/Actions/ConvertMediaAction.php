@@ -2,20 +2,20 @@
 
 namespace TheJawker\Mediaux\Actions;
 
-use Str;
 use Exception;
-use Spatie\Image\Image;
+use FFMpeg\Filters\Video\ResizeFilter;
+use FFMpeg\Format\FormatInterface;
 use FFMpeg\Format\Video\Ogg;
 use FFMpeg\Format\Video\WebM;
 use FFMpeg\Format\Video\X264;
-use FFMpeg\Format\FormatInterface;
-use FFMpeg\Filters\Video\ResizeFilter;
-use TheJawker\Mediaux\Models\MediaItem;
-use TheJawker\Mediaux\Support\GifFormat;
-use TheJawker\Mediaux\Models\MediaConversion;
 use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
+use Spatie\Image\Image;
+use Str;
 use TheJawker\Mediaux\Contracts\MediaContract;
 use TheJawker\Mediaux\DataTransferObjects\ConversionSpecification;
+use TheJawker\Mediaux\Models\MediaConversion;
+use TheJawker\Mediaux\Models\MediaItem;
+use TheJawker\Mediaux\Support\GifFormat;
 
 class ConvertMediaAction
 {

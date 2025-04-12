@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Http\UploadedFile;
-
 use TheJawker\Mediaux\Models\MediaItem;
+
 use function Pest\Laravel\postJson;
 
 test('a user can upload a media file', function () {

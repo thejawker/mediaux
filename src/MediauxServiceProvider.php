@@ -14,7 +14,6 @@ class MediauxServiceProvider extends PackageServiceProvider
         $this->app->register(ServiceProvider::class);
     }
 
-
     public function configurePackage(Package $package): void
     {
         /*
