@@ -8,6 +8,8 @@ use TheJawker\Mediaux\Actions\CreateMediaItemFromRequestAction;
 
 class MediauxUploader
 {
+    private $associateMethod = null;
+
     public function __construct(public Request $request)
     {
     }
@@ -27,9 +29,19 @@ class MediauxUploader
         ]);
     }
 
+    public function associate(callable $associateCallback): self
+    {
+        $this->associateMethod = $associateCallback;
+        return $this;
+    }
+
     public function respond(): JsonResponse
     {
         $mediaItem = (new CreateMediaItemFromRequestAction)->execute(auth()->user(), $this->request);
+
+        if ($this->associateMethod) {
+            ($this->associateMethod)($mediaItem);
+        }
 
         return response()->json($mediaItem, 201);
     }

@@ -23,6 +23,7 @@ class MediaItem extends Model implements MediaContract
 
     protected $appends = [
         'url',
+        'type',
     ];
 
     protected function casts(): array
@@ -106,5 +107,10 @@ class MediaItem extends Model implements MediaContract
     public function getUrlAttribute(): string
     {
         return $this->getUrl();
+    }
+
+    public function getTypeAttribute(): string
+    {
+        return $this->getType();
     }
 }

@@ -9,12 +9,12 @@ use TheJawker\Mediaux\Commands\CleanExpiredMedia;
 
 class MediauxServiceProvider extends PackageServiceProvider
 {
-    public function packageRegistered()
+    public function packageRegistered(): void
     {
-        $this->app->register(ServiceProvider::class);
+        $this->app->register(ServiceProvider::class, true);
 
         if (!config('mediaux.disable_routes')) {
-            $this->loadRoutesFrom('./routes/media.php');
+            $this->loadRoutesFrom(__DIR__ . '/../routes/media.php');
         }
     }
 
@@ -28,7 +28,11 @@ class MediauxServiceProvider extends PackageServiceProvider
         $package
             ->name('mediaux')
             ->hasConfigFile()
-            ->hasMigration('create_mediaux_table')
+            ->hasMigrations([
+                'create_media_conversions_table',
+                'create_media_items_table',
+                'create_mediables_table',
+            ])
             ->hasCommands(CleanExpiredMedia::class);
     }
 }

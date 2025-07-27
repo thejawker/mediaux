@@ -22,6 +22,21 @@ trait IsMedia
         return $this->getDisk()->mimeType($this->filename);
     }
 
+    public function getType(): string
+    {
+        $mime = $this->getMimeType();
+
+        if (str_starts_with($mime, 'image/')) {
+            return 'image';
+        }
+
+        if (str_starts_with($mime, 'video/')) {
+            return 'video';
+        }
+
+        return 'other';
+    }
+
     public function getHash(): string
     {
         return $this->hash;
@@ -59,6 +74,6 @@ trait IsMedia
 
     public function getUrl(): string
     {
-        return route('media.fetch', [$this, $this->original_filename]);
+        return config('mediaux.get_url')(request(), $this);
     }
 }
