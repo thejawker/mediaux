@@ -22,6 +22,11 @@ class MediauxFetcher
         $conversionSpec = ConversionSpecification::fromRequest($this->request->instance());
         $mediaItem = $this->mediaItem ?? MediaItem::findOrFail(request()->route('mediaItem'));
 
+        abort_unless(
+            (bool) config('mediaux.authorize')($this->request, $mediaItem),
+            403,
+        );
+
         $conversion = $mediaItem->getConversion($conversionSpec);
 
         if (request()->headers->get('If-None-Match') === $conversion->getHash()) {

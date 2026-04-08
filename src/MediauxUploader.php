@@ -11,8 +11,22 @@ class MediauxUploader
 {
     private $associateMethod = null;
 
+    private ?bool $private = null;
+
     public function __construct(public Request $request)
     {
+    }
+
+    public function private(bool $private = true): self
+    {
+        $this->private = $private;
+        return $this;
+    }
+
+    public function public(): self
+    {
+        $this->private = false;
+        return $this;
     }
 
     public function customValidation(array $rules, ...$params)
@@ -41,7 +55,7 @@ class MediauxUploader
         $user = auth()->user();
         abort_unless($user instanceof HasMediaContract, 401);
 
-        $mediaItem = (new CreateMediaItemFromRequestAction)->execute($user, $this->request);
+        $mediaItem = (new CreateMediaItemFromRequestAction)->execute($user, $this->request, $this->private);
 
         if ($this->associateMethod) {
             ($this->associateMethod)($mediaItem);

@@ -41,6 +41,7 @@ class MediaItem extends Model implements MediaContract
     {
         return [
             'expires_at' => 'datetime',
+            'public' => 'bool',
         ];
     }
 
