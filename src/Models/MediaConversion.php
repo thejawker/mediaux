@@ -10,6 +10,15 @@ use TheJawker\Mediaux\Database\Factories\MediaConversionFactory;
 use TheJawker\Mediaux\DataTransferObjects\ConversionSpecification;
 use TheJawker\Mediaux\Traits\IsMedia;
 
+/**
+ * @property int $id
+ * @property int $media_item_id
+ * @property string $filename
+ * @property string $original_filename
+ * @property string $disk
+ * @property string $hash
+ * @property array<string, mixed> $specifications
+ */
 class MediaConversion extends Model implements MediaContract
 {
     /** @use HasFactory<MediaConversionFactory> */

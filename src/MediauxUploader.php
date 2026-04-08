@@ -5,6 +5,7 @@ namespace TheJawker\Mediaux;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use TheJawker\Mediaux\Actions\CreateMediaItemFromRequestAction;
+use TheJawker\Mediaux\Contracts\HasMediaContract;
 
 class MediauxUploader
 {
@@ -37,7 +38,10 @@ class MediauxUploader
 
     public function respond(): JsonResponse
     {
-        $mediaItem = (new CreateMediaItemFromRequestAction)->execute(auth()->user(), $this->request);
+        $user = auth()->user();
+        abort_unless($user instanceof HasMediaContract, 401);
+
+        $mediaItem = (new CreateMediaItemFromRequestAction)->execute($user, $this->request);
 
         if ($this->associateMethod) {
             ($this->associateMethod)($mediaItem);

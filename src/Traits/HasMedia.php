@@ -3,8 +3,7 @@
 namespace TheJawker\Mediaux\Traits;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use TheJawker\Mediaux\Models\MediaItem;
 
 /**
@@ -12,10 +11,7 @@ use TheJawker\Mediaux\Models\MediaItem;
  */
 trait HasMedia
 {
-    /**
-     * @return MorphToMany<MediaItem>|HasMany<MediaItem>
-     */
-    public function mediaItems()
+    public function mediaItems(): Relation
     {
         $userModel = config('mediaux.user_model');
 

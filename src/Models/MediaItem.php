@@ -14,6 +14,17 @@ use TheJawker\Mediaux\Database\Factories\MediaItemFactory;
 use TheJawker\Mediaux\DataTransferObjects\ConversionSpecification;
 use TheJawker\Mediaux\Traits\IsMedia;
 
+/**
+ * @property int $id
+ * @property int|null $user_id
+ * @property string $filename
+ * @property string $original_filename
+ * @property string $mime_type
+ * @property string $disk
+ * @property string $hash
+ * @property bool $public
+ * @property \Illuminate\Support\Carbon|null $expires_at
+ */
 class MediaItem extends Model implements MediaContract
 {
     /** @use HasFactory<MediaItemFactory> */
@@ -74,6 +85,9 @@ class MediaItem extends Model implements MediaContract
         ]);
     }
 
+    /**
+     * @return HasMany<MediaConversion, $this>
+     */
     public function conversions(): HasMany
     {
         return $this->hasMany(MediaConversion::class);

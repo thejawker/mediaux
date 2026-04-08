@@ -77,15 +77,15 @@ class ConvertMediaAction
 
         $mode = $specifications->height ? ResizeFilter::RESIZEMODE_SCALE_WIDTH : ResizeFilter::RESIZEMODE_SCALE_HEIGHT;
 
-        $video
-            ->export()
-            ->resize(
-                width: $specifications->width ?? $dimensions->getWidth(),
-                height: $specifications->height ?? $dimensions->getHeight(),
-                mode: $mode,
-            )
-            ->inFormat($format)
-            ->save($conversion->filename);
+        $exporter = $video->export()->inFormat($format);
+
+        $exporter->resize(
+            width: $specifications->width ?? $dimensions->getWidth(),
+            height: $specifications->height ?? $dimensions->getHeight(),
+            mode: $mode,
+        );
+
+        $exporter->save($conversion->filename);
 
         $conversion->hash = (new HashMediaAction)->hashMedia($conversion);
         $conversion->save();
